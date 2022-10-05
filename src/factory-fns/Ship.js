@@ -1,5 +1,5 @@
 const Ship = (length) => {
-  let hits = 0;
+  let hits = [];
   function hit() {
     if (hits < length) {
       ++hits;

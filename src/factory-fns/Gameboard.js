@@ -6,6 +6,7 @@ const Gameboard = () => {
   let placedShips = 0;
   let humanShips = [5, 4, 3, 2];
   let placementDirection = "horizontal";
+  let hits = [];
 
   const placeShip = (length, xCoord, yCoord, direction) => {
     const ship = Ship(length);
@@ -19,7 +20,6 @@ const Gameboard = () => {
         board[xCoord][yCoord + i] = ship;
       }
     }
-    console.log(board);
   };
 
   const recieveAttack = (xCoord, yCoord) => {
@@ -28,11 +28,12 @@ const Gameboard = () => {
     }
     if (board[xCoord][yCoord].hits !== undefined) {
       board[xCoord][yCoord].hit();
+      hits.push([xCoord, yCoord]);
     }
   };
   const allSunk = () => {
     const flatBoard = board.flat();
-    const ships = flatBoard.filter((el) => el.hits !== undefined);
+    const ships = flatBoard.filter((el) => typeof el === "object");
     const remainingShips = ships.filter((ship) => ship.isSunk() !== true);
     if (remainingShips.length === 0) {
       return true;
@@ -107,8 +108,8 @@ const Gameboard = () => {
 
   const randomlyPlaceShips = (ships) => {
     ships.forEach((ship) => {
-      let coords = tryShipPlacement(ship);
-      placeShip(ship, coords.x, coords.y, coords.dir);
+      let coords = tryShipPlacement(ship.length);
+      placeShip(ship.length, coords.x, coords.y, coords.dir);
     });
   };
 
@@ -133,6 +134,7 @@ const Gameboard = () => {
     handlePlaceShip,
     placementDirection,
     isPlacementValid,
+    hits,
   };
 };
 

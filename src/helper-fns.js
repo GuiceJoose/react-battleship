@@ -16,3 +16,5 @@ function generateRandomCoords() {
 function pickRandomDirection() {
   return Math.random() >= 0.5 ? "horizontal" : "vertical";
 }
+
+export { isArray1InArray2, generateRandomCoords, pickRandomDirection };

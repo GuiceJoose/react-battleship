@@ -1,5 +1,5 @@
-import Ship from "./factory-fns/Ship";
-import PlayerBoard from "./Playerboard";
+import Ship from "../factory-fns/Ship";
+import Playerboard from "./Playerboard";
 import RotateButton from "./RotateButton";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ const StartScreen = ({ placedBugs, setPlacedBugs, bugs }) => {
     <div className="startModal">
       <h3>Welcome to Battlebugs</h3>
       <h4>Please place your {bugs[placedBugs].name}</h4>
-      <PlayerBoard
+      <Playerboard
         placementDirection={placementDirection}
         placedBugs={placedBugs}
         setPlacedBugs={setPlacedBugs}

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import Playerboard from "./Playerboard";
-import StartScreen from "./StartScreen";
+import Game from "./components/Game";
+import StartScreen from "./components/StartScreen";
 function App() {
   const [placedBugs, setPlacedBugs] = useState(0);
   const bugs = [
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">Battlebugs</header>
       {placedBugs === 5 ? (
-        ""
+        <Game bugs={bugs} />
       ) : (
         <StartScreen
           setPlacedBugs={setPlacedBugs}
@@ -24,9 +24,6 @@ function App() {
           bugs={bugs}
         />
       )}
-      {/* <div className="gameArea">
-        <Playerboard />
-      </div> */}
     </div>
   );
 }
