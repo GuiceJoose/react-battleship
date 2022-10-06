@@ -8,16 +8,19 @@ const Gameboard = () => {
   let placementDirection = "horizontal";
   let hits = [];
 
-  const placeShip = (length, xCoord, yCoord, direction) => {
-    const ship = Ship(length);
+  const placeShip = (name, length, xCoord, yCoord, direction) => {
     if (direction === "horizontal") {
+      const ship = Ship(name, length, "horizontal");
       for (let i = 0; i < length; i++) {
-        board[xCoord + i][yCoord] = ship;
+        let position = i;
+        board[xCoord + i][yCoord] = { ship, position };
       }
     }
     if (direction === "vertical") {
+      const ship = Ship(name, length, "vertical");
       for (let i = 0; i < length; i++) {
-        board[xCoord][yCoord + i] = ship;
+        let position = i;
+        board[xCoord][yCoord + i] = { ship, position };
       }
     }
   };
@@ -26,15 +29,15 @@ const Gameboard = () => {
     if (board[xCoord][yCoord] === undefined) {
       board[xCoord][yCoord] = "miss";
     }
-    if (board[xCoord][yCoord].hits !== undefined) {
-      board[xCoord][yCoord].hit();
+    if (board[xCoord][yCoord].ship !== undefined) {
+      board[xCoord][yCoord].ship.hit();
       hits.push([xCoord, yCoord]);
     }
   };
   const allSunk = () => {
     const flatBoard = board.flat();
     const ships = flatBoard.filter((el) => typeof el === "object");
-    const remainingShips = ships.filter((ship) => ship.isSunk() !== true);
+    const remainingShips = ships.filter((obj) => obj.ship.isSunk() !== true);
     if (remainingShips.length === 0) {
       return true;
     } else {
@@ -109,7 +112,7 @@ const Gameboard = () => {
   const randomlyPlaceShips = (ships) => {
     ships.forEach((ship) => {
       let coords = tryShipPlacement(ship.length);
-      placeShip(ship.length, coords.x, coords.y, coords.dir);
+      placeShip(ship.name, ship.length, coords.x, coords.y, coords.dir);
     });
   };
 

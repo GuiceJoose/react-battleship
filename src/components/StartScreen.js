@@ -2,6 +2,7 @@ import Ship from "../factory-fns/Ship";
 import Playerboard from "./Playerboard";
 import RotateButton from "./RotateButton";
 import { useState } from "react";
+import PlayerBugsContainer from "./PlayerBugsContainer";
 
 const StartScreen = ({ placedBugs, setPlacedBugs, bugs }) => {
   const [placementDirection, setPlacementDirection] = useState("horizontal");
@@ -18,12 +19,16 @@ const StartScreen = ({ placedBugs, setPlacedBugs, bugs }) => {
     <div className="startModal">
       <h3>Welcome to Battlebugs</h3>
       <h4>Please place your {bugs[placedBugs].name}</h4>
-      <Playerboard
-        placementDirection={placementDirection}
-        placedBugs={placedBugs}
-        setPlacedBugs={setPlacedBugs}
-        bugs={bugs}
-      />
+      <div className="boardContainer">
+        <PlayerBugsContainer />
+        <Playerboard
+          placementDirection={placementDirection}
+          placedBugs={placedBugs}
+          setPlacedBugs={setPlacedBugs}
+          bugs={bugs}
+        />
+      </div>
+
       <RotateButton handleRotate={handleRotate} />
     </div>
   );

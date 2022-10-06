@@ -11,6 +11,17 @@
   justify-content: center;
 }
 
+.bugContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.bug {
+  height: 30px;
+}
+
 .gameArea {
   display: flex;
   gap: 20px;
@@ -52,6 +63,12 @@
   height: 30px;
 }
 
+.hoverSquare {
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine;
+}
+
 .computerSquare {
   border: 1px solid black;
   width: 30px;
@@ -72,6 +89,11 @@
   height: 30px;
 }
 
+.boardContainer {
+  display: flex;
+  gap: 30px;
+}
+
 .gameOver {
   background-color: black;
   counter-reset: white;
@@ -80,4 +102,116 @@
   position: absolute;
   top: 50;
   left: 50;
+}
+
+.Caterpillar-0,
+.Caterpillar-1,
+.Caterpillar-2,
+.Caterpillar-3,
+.Caterpillar-4 {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  background-image: url("../public/caterpillar.png");
+  background-repeat: no-repeat;
+}
+
+.Caterpillar-0 {
+  background-position: 0%;
+}
+.Caterpillar-1 {
+  background-position: 25%;
+}
+.Caterpillar-2 {
+  background-position: 50%;
+}
+.Caterpillar-3 {
+  background-position: 75%;
+}
+.Caterpillar-4 {
+  background-position: 100%;
+}
+
+.Wasp-0,
+.Wasp-1,
+.Wasp-2,
+.Wasp-3 {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  background-image: url("../public/wasp.png");
+  background-repeat: no-repeat;
+}
+
+.Wasp-0 {
+  background-position: 0%;
+}
+.Wasp-1 {
+  background-position: 33.33%;
+}
+.Wasp-2 {
+  background-position: 66.66%;
+}
+.Wasp-3 {
+  background-position: 99.99%;
+}
+
+.Grasshopper-0,
+.Grasshopper-1,
+.Grasshopper-2 {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  background-image: url("../public/grasshopper.png");
+  background-repeat: no-repeat;
+}
+
+.Grasshopper-0 {
+  background-position: 0%;
+}
+.Grasshopper-1 {
+  background-position: 50%;
+}
+.Grasshopper-2 {
+  background-position: 100%;
+}
+
+.Ant-0,
+.Ant-1,
+.Ant-2 {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  background-image: url("../public/ant.png");
+  background-repeat: no-repeat;
+}
+
+.Ant-0 {
+  background-position: 0%;
+}
+.Ant-1 {
+  background-position: 50%;
+}
+.Ant-2 {
+  background-position: 100%;
+}
+
+.Ladybug-0,
+.Ladybug-1 {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  background-image: url("../public/ladybug.png");
+  background-repeat: no-repeat;
+}
+
+.Ladybug-0 {
+  background-position: 0%;
+}
+.Ladybug-1 {
+  background-position: 100%;
+}
+
+.vertical {
+  transform: rotate(90deg);
 }

@@ -1,4 +1,4 @@
-const Ship = (length) => {
+const Ship = (name, length, direction) => {
   let hits = [];
   function hit() {
     if (hits < length) {
@@ -12,7 +12,7 @@ const Ship = (length) => {
       return false;
     }
   }
-  return { length, hits, hit, isSunk };
+  return { direction, length, name, hits, hit, isSunk };
 };
 
 export default Ship;
