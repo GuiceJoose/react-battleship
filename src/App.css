@@ -42,14 +42,14 @@
   height: 30px;
 }
 
-.playerSquareHit {
+.playerSquare.Hit {
   background-color: black;
   border: 1px solid black;
   width: 30px;
   height: 30px;
 }
 
-.playerSquareMiss {
+.playerSquare.Miss {
   background-color: red;
   border: 1px solid black;
   width: 30px;
@@ -75,18 +75,22 @@
   height: 30px;
 }
 
-.computerSquareHit {
+.computerSquare.Hit {
   background-color: black;
   border: 1px solid black;
   width: 30px;
   height: 30px;
 }
 
-.computerSquareMiss {
+.computerSquare.Miss {
   background-color: red;
   border: 1px solid black;
   width: 30px;
   height: 30px;
+}
+
+.computerSquare.Sunk {
+  background-color: blue;
 }
 
 .boardContainer {

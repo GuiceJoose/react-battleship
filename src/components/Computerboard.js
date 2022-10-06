@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useRef, useState, useEffect } from "react";
 import Gameboard from "../factory-fns/Gameboard";
 import Player from "../factory-fns/Player";
@@ -50,8 +51,18 @@ const Computerboard = ({
   }, [hitsOnComputer]);
 
   const getSquareClass = (squareStatus, xcoord, ycoord) => {
+    if (squareStatus === undefined) {
+      return "";
+    }
     if (squareStatus === "miss") {
       return "Miss";
+    }
+    if (squareStatus.ship.isSunk()) {
+      if (squareStatus.ship.direction === "vertical") {
+        return `${squareStatus.ship.name}-${squareStatus.position} vertical`;
+      } else {
+        return `${squareStatus.ship.name}-${squareStatus.position}`;
+      }
     }
     if (isArray1InArray2([xcoord, ycoord], hitsOnComputer)) {
       return "Hit";
@@ -70,11 +81,10 @@ const Computerboard = ({
                   xcoord={index}
                   ycoord={sIndex}
                   onClick={handleAttackClick}
-                  className={`computerSquare${getSquareClass(
-                    square,
-                    index,
-                    sIndex
-                  )}`}
+                  className={classNames(
+                    "computerSquare",
+                    getSquareClass(square, index, sIndex)
+                  )}
                 ></div>
               );
             })}
