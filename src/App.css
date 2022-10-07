@@ -1,14 +1,55 @@
+
+@font-face {
+  font-family: 'retro_gamingregular';
+  src: url('../public/fonts/retro_gaming-webfont.woff2') format('woff2'),
+       url('../public/fonts/retro_gaming-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  background-image: url("../public/battlebugzbackground.png");
+}
+
 .App {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.App-header {
+  font-family: 'retro_gamingregular';
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  width: 100vw;
+}
+
+.headerImage {
+  width: 100%;
+  height: 100%;
 }
 
 .startModal {
-  background-color: grey;
+  background-color: #649C31;
+  font-family: 'retro_gamingregular';
+  width: 60vw;
+  padding: 3rem ;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  border: 2px solid #A62349;
+  gap: 1rem;
 }
 
 .bugContainer {
@@ -19,49 +60,56 @@
 }
 
 .bug {
-  height: 30px;
+  height: 3rem;
 }
 
 .gameArea {
   display: flex;
-  gap: 20px;
+  gap: 3rem;
+  align-items: center;
+justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .playerBoard {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  width: 30vw;
+  height: 30vw;
+  grid-column-gap: 1px;
+  background-color: black;
+  border: 1px solid black;
 }
 .computerBoard {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  grid-column-gap: 1px;
+  width: 30vw;
+  height: 30vw;
+  background-color: black;
+  border: 1px solid black;
 }
 
 .playerSquare {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 10%;
+  background-color: #649C31;
 }
 
 .playerSquare.Hit {
-  background-color: black;
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
+  content: url('../public/1splat.png');
+  background-size: cover;
 }
 
 .playerSquare.Miss {
   background-color: red;
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
 }
 
-.playerSquareShip {
-  background-color: green;
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
-}
 
 .hoverSquare {
   width: 100%;
@@ -70,23 +118,18 @@
 }
 
 .computerSquare {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
+  background-color: #649C31;
+  width: 100%;
+  height: 10%;
 }
 
 .computerSquare.Hit {
-  background-color: black;
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
+  background-image: url('../public/1splat.png');
+  background-size: cover;
 }
 
 .computerSquare.Miss {
   background-color: red;
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
 }
 
 .computerSquare.Sunk {
@@ -95,7 +138,7 @@
 
 .boardContainer {
   display: flex;
-  gap: 30px;
+  gap: 3rem;
 }
 
 .gameOver {
@@ -113,11 +156,9 @@
 .Caterpillar-2,
 .Caterpillar-3,
 .Caterpillar-4 {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
   background-image: url("../public/caterpillar.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Caterpillar-0 {
@@ -140,11 +181,9 @@
 .Wasp-1,
 .Wasp-2,
 .Wasp-3 {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
   background-image: url("../public/wasp.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Wasp-0 {
@@ -163,11 +202,9 @@
 .Grasshopper-0,
 .Grasshopper-1,
 .Grasshopper-2 {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
   background-image: url("../public/grasshopper.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Grasshopper-0 {
@@ -183,11 +220,9 @@
 .Ant-0,
 .Ant-1,
 .Ant-2 {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
   background-image: url("../public/ant.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Ant-0 {
@@ -202,11 +237,9 @@
 
 .Ladybug-0,
 .Ladybug-1 {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
   background-image: url("../public/ladybug.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Ladybug-0 {
@@ -218,4 +251,21 @@
 
 .vertical {
   transform: rotate(90deg);
+}
+
+.activeBug {
+  animation: .5s infinite alternate shrink-and-grow;
+}
+
+.highlighted {
+  background-color: aquamarine;
+}
+
+@keyframes shrink-and-grow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
 }

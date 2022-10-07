@@ -1,12 +1,12 @@
 const Ship = (name, length, direction) => {
-  let hits = [];
+  let hits = 0;
   function hit() {
     if (hits < length) {
-      ++hits;
+      ++this.hits;
     }
   }
   function isSunk() {
-    if (hits === length) {
+    if (this.hits === this.length) {
       return true;
     } else {
       return false;

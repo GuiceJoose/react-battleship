@@ -1,18 +1,43 @@
+import classNames from "classnames";
+import RotateButton from "./RotateButton";
 import { useRef } from "react";
 
-const PlayerBugsContainer = () => {
-  const dragItem = useRef();
-  const dragStart = (e, position) => {
-    dragItem.current = position;
-    console.log(dragItem.current);
+const PlayerBugsContainer = ({
+  placementDirection,
+  placedBugs,
+  bugs,
+  handleRotate,
+}) => {
+  const getActiveBug = (bug) => {
+    if (bugs[placedBugs].name === bug) {
+      return "activeBug";
+    }
   };
   return (
     <div className="bugContainer">
-      <img className="bug" src="/caterpillar.png"></img>
-      <img className="bug" src="/wasp.png"></img>
-      <img className="bug" src="/grasshopper.png"></img>
-      <img className="bug" src="/ant.png"></img>
-      <img className="bug" src="/ladybug.png"></img>
+      <img
+        className={classNames("bug", getActiveBug("Caterpillar"))}
+        src="/caterpillar.png"
+      ></img>
+      <img
+        className={classNames("bug", getActiveBug("Wasp"))}
+        src="/wasp.png"
+      ></img>
+      <img
+        className={classNames("bug", getActiveBug("Grasshopper"))}
+        src="/grasshopper.png"
+      ></img>
+      <img
+        className={classNames("bug", getActiveBug("Ant"))}
+        src="/ant.png"
+      ></img>
+      <img
+        className={classNames("bug", getActiveBug("Ladybug"))}
+        src="/ladybug.png"
+      ></img>
+      <div>Placement:</div>
+      <div>{placementDirection}</div>
+      <RotateButton handleRotate={handleRotate} />
     </div>
   );
 };

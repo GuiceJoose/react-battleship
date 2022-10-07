@@ -73,7 +73,7 @@ const Computerboard = ({
     <div className="computerBoard">
       {computerBoard.board.map((row, index) => {
         return (
-          <div key={index}>
+          <div className="column" key={index}>
             {row.map((square, sIndex) => {
               return (
                 <div

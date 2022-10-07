@@ -31,6 +31,7 @@ const Gameboard = () => {
     }
     if (board[xCoord][yCoord].ship !== undefined) {
       board[xCoord][yCoord].ship.hit();
+      console.log(board[xCoord][yCoord].ship);
       hits.push([xCoord, yCoord]);
     }
   };
@@ -57,15 +58,6 @@ const Gameboard = () => {
           return false;
         }
       }
-      // Is another ship above or below
-      for (let i = 0; i < length; i++) {
-        if (board[xCoord + i][yCoord + 1] != undefined) {
-          return false;
-        }
-        if (board[xCoord + i][yCoord - 1] != undefined) {
-          return false;
-        }
-      }
     }
     if (direction === "vertical") {
       // Does ship fit on board
@@ -76,21 +68,6 @@ const Gameboard = () => {
       for (let i = 0; i < length; i++) {
         if (board[xCoord][yCoord + i] != undefined) {
           return false;
-        }
-      }
-      // Is another ship left or right
-      for (let i = 0; i < length; i++) {
-        // only check right side if not on edge
-        if (xCoord < 9) {
-          if (board[xCoord + 1][yCoord + i] != undefined) {
-            return false;
-          }
-        }
-        // only check left side if not on edge
-        if (xCoord > 0) {
-          if (board[xCoord - 1][yCoord + i] != undefined) {
-            return false;
-          }
         }
       }
     }

@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Battlebugs</header>
+      <header className="App-header">BattleBugz</header>
       {placedBugs === 5 ? (
         <Game bugs={bugs} />
       ) : (

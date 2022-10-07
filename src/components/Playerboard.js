@@ -17,15 +17,46 @@ const Playerboard = ({
   bugs,
 }) => {
   const [hitsOnPlayer, setHitsOnPlayer] = useState([]);
+  const [highlightedSquares, setHighlightedSquares] = useState([]);
   let placeBug = humanBoard.placeShip;
   let tryPlacement = humanBoard.isPlacementValid;
 
+  const handleMouseEnter = (event) => {
+    if (placedBugs < 5) {
+      const length = bugs[placedBugs].length;
+      const xCoord = parseInt(event.target.attributes.xcoord.value);
+      const yCoord = parseInt(event.target.attributes.ycoord.value);
+      const direction = placementDirection;
+      if (placementDirection === "horizontal") {
+        if (tryPlacement(length, xCoord, yCoord, direction)) {
+          let squares = [];
+          for (let i = 0; i < length; i++) {
+            squares.push([xCoord + i, yCoord]);
+            setHighlightedSquares([squares]);
+          }
+        } else {
+          setHighlightedSquares([]);
+        }
+      }
+      if (placementDirection === "vertical") {
+        if (tryPlacement(length, xCoord, yCoord, direction)) {
+          let squares = [];
+          for (let i = 0; i < length; i++) {
+            squares.push([xCoord, yCoord + i]);
+            setHighlightedSquares([squares]);
+          }
+        } else {
+          setHighlightedSquares([]);
+        }
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHighlightedSquares([]);
+  };
+
   const handlePlaceShip = (event) => {
-    console.log(
-      humanBoard.board[parseInt(event.target.attributes.xcoord.value)][
-        parseInt(event.target.attributes.ycoord.value)
-      ]
-    );
     if (placedBugs < 5) {
       const name = bugs[placedBugs].name;
       const length = bugs[placedBugs].length;
@@ -52,30 +83,13 @@ const Playerboard = ({
         setIsGameOver("Player 2 wins!");
       }
     }
-  }, [isPlayerTurn]);
-
-  const getSquareClass = (squareStatus, xcoord, ycoord) => {
-    if (squareStatus === undefined) {
-      return "";
-    }
-    if (squareStatus === "miss") {
-      return "Miss";
-    }
-    if (isArray1InArray2([xcoord, ycoord], hitsOnPlayer)) {
-      return "Hit";
-    }
-    if (squareStatus.ship.direction === "vertical") {
-      return `${squareStatus.ship.name}-${squareStatus.position} vertical`;
-    } else {
-      return `${squareStatus.ship.name}-${squareStatus.position}`;
-    }
-  };
+  }, [isPlayerTurn, setIsGameOver, setIsPlayerTurn]);
 
   return (
     <div className="playerBoard">
       {humanBoard.board.map((row, index) => {
         return (
-          <div key={index}>
+          <div className="column" key={index}>
             {row.map((square, sIndex) => {
               return (
                 <PlayerSquare
@@ -83,7 +97,10 @@ const Playerboard = ({
                   xcoord={index}
                   ycoord={sIndex}
                   handlePlaceShip={handlePlaceShip}
-                  getSquareClass={getSquareClass}
+                  handleMouseEnter={handleMouseEnter}
+                  handleMouseLeave={handleMouseLeave}
+                  highlightedSquares={highlightedSquares}
+                  hitsOnPlayer={hitsOnPlayer}
                   status={square}
                   placementDirection={placementDirection}
                 ></PlayerSquare>
