@@ -87,27 +87,23 @@ const Playerboard = ({
 
   return (
     <div className="playerBoard">
-      {humanBoard.board.map((row, index) => {
-        return (
-          <div className="column" key={index}>
-            {row.map((square, sIndex) => {
-              return (
-                <PlayerSquare
-                  key={`${index + sIndex}`}
-                  xcoord={index}
-                  ycoord={sIndex}
-                  handlePlaceShip={handlePlaceShip}
-                  handleMouseEnter={handleMouseEnter}
-                  handleMouseLeave={handleMouseLeave}
-                  highlightedSquares={highlightedSquares}
-                  hitsOnPlayer={hitsOnPlayer}
-                  status={square}
-                  placementDirection={placementDirection}
-                ></PlayerSquare>
-              );
-            })}
-          </div>
-        );
+      {humanBoard.board.map((column, index) => {
+        return column.map((square, sIndex) => {
+          return (
+            <PlayerSquare
+              key={`${index}${sIndex}`}
+              xcoord={index}
+              ycoord={sIndex}
+              handlePlaceShip={handlePlaceShip}
+              handleMouseEnter={handleMouseEnter}
+              handleMouseLeave={handleMouseLeave}
+              highlightedSquares={highlightedSquares}
+              hitsOnPlayer={hitsOnPlayer}
+              status={square}
+              placementDirection={placementDirection}
+            ></PlayerSquare>
+          );
+        });
       })}
     </div>
   );

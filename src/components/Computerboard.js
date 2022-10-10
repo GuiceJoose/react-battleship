@@ -72,24 +72,20 @@ const Computerboard = ({
   return (
     <div className="computerBoard">
       {computerBoard.board.map((row, index) => {
-        return (
-          <div className="column" key={index}>
-            {row.map((square, sIndex) => {
-              return (
-                <div
-                  key={`${index + sIndex}`}
-                  xcoord={index}
-                  ycoord={sIndex}
-                  onClick={handleAttackClick}
-                  className={classNames(
-                    "computerSquare",
-                    getSquareClass(square, index, sIndex)
-                  )}
-                ></div>
-              );
-            })}
-          </div>
-        );
+        return row.map((square, sIndex) => {
+          return (
+            <div
+              key={`${index}${sIndex}`}
+              xcoord={index}
+              ycoord={sIndex}
+              onClick={handleAttackClick}
+              className={classNames(
+                "computerSquare",
+                getSquareClass(square, index, sIndex)
+              )}
+            ></div>
+          );
+        });
       })}
     </div>
   );
