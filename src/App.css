@@ -10,6 +10,7 @@
 
 * {
   margin: 0;
+  font-family: 'retro_gamingregular';
 }
 
 body {
@@ -67,7 +68,20 @@ body {
   display: flex;
   gap: 3rem;
   align-items: center;
-justify-content: center;
+  justify-content: center;
+}
+
+.playerArea, .computerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.playerHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -378,6 +392,32 @@ justify-content: center;
 .highlighted {
   background-color: aquamarine;
 }
+
+button{
+  display:inline-block;
+  padding:0.35rem 1.2rem;
+  border:0.1rem solid black;
+  background-color: #649C31;
+  margin:0 0.3rem 0.3rem 0;
+  border-radius:0.12rem;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'retro_gamingregular',sans-serif;
+  font-weight:300;
+  color:black;
+  text-align:center;
+  transition: all 0.2s;
+  }
+  button:hover{
+  color:black;
+  box-shadow: 2px 2px 2px  black;
+  background-color:#A62349;
+  }
+  button:active{
+    color:black;
+    box-shadow: 0px 0px 2px  black;
+    background-color:#A62349;
+    }
 
 @keyframes shrink-and-grow {
   0% {

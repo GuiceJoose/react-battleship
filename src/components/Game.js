@@ -8,18 +8,30 @@ const Game = ({ bugs }) => {
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   return (
     <div className="gameArea">
-      <Playerboard
-        setIsGameOver={setIsGameOver}
-        isPlayerTurn={isPlayerTurn}
-        setIsPlayerTurn={setIsPlayerTurn}
-      />
-      <Computerboard
-        setIsGameOver={setIsGameOver}
-        bugs={bugs}
-        isPlayerTurn={isPlayerTurn}
-        setIsPlayerTurn={setIsPlayerTurn}
-      />
-      {isGameOver && <GameOverScreen message={isGameOver} />}
+      <div className="playerArea">
+        <div className="playerHeader">
+          <img src="man.png"></img>
+          <div>Your Bugs</div>
+        </div>
+        <Playerboard
+          setIsGameOver={setIsGameOver}
+          isPlayerTurn={isPlayerTurn}
+          setIsPlayerTurn={setIsPlayerTurn}
+        />
+      </div>
+      <div className="computerArea">
+        <div className="playerHeader">
+          <div>Computer's bugs</div>
+          <img src="computer.png"></img>
+        </div>
+        <Computerboard
+          setIsGameOver={setIsGameOver}
+          bugs={bugs}
+          isPlayerTurn={isPlayerTurn}
+          setIsPlayerTurn={setIsPlayerTurn}
+        />
+        {isGameOver && <GameOverScreen message={isGameOver} />}
+      </div>
     </div>
   );
 };
