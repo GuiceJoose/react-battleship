@@ -60,7 +60,7 @@ body {
 }
 
 .bug {
-  height: 3rem;
+  height: 3vw;
 }
 
 .gameArea {
@@ -70,11 +70,6 @@ body {
 justify-content: center;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
 
 .playerBoard {
   display: grid;
@@ -83,8 +78,6 @@ justify-content: center;
   grid-auto-flow: column;
   width: 30vw;
   height: 30vw;
-  column-gap: 1px;
-  row-gap: 1px;
   background-color: black;
   border: 1px solid black;
 }
@@ -92,8 +85,6 @@ justify-content: center;
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-auto-flow: column;
-  grid-column-gap: 1px;
-  row-gap: 1px;
   width: 30vw;
   height: 30vw;
   background-color: black;
@@ -102,6 +93,8 @@ justify-content: center;
 
 .playerSquare {
   background-color: #649C31;
+  border: 1px solid black;
+  margin: -1px;
   width: 100%;
   height: 100%;
 }
@@ -124,6 +117,8 @@ justify-content: center;
 
 .computerSquare {
   background-color: #649C31;
+  border: 1px solid black;
+  margin: -1px;
   width: 100%;
   height: 100%;
 }
@@ -147,13 +142,33 @@ justify-content: center;
 }
 
 .gameOver {
-  background-color: black;
-  counter-reset: white;
-  width: 300px;
-  height: 300px;
   position: absolute;
-  top: 50;
-  left: 50;
+  background-color: rgb(0, 0, 0, .3);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.gameOverModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  padding: 2rem;
+  background-color: burlywood;
+  font-family: 'retro_gamingregular';
+  color: black;
+  border-radius: 10px;
+  width: 30vw;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.winnerImage {
+  width: 150px;
 }
 
 .Caterpillar-0,
@@ -182,6 +197,32 @@ justify-content: center;
   background-position: 100%;
 }
 
+.deadCaterpillar-0,
+.deadCaterpillar-1,
+.deadCaterpillar-2,
+.deadCaterpillar-3,
+.deadCaterpillar-4 {
+  background-image: url("../public/5splat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.deadCaterpillar-0 {
+  background-position: 0%;
+}
+.deadCaterpillar-1 {
+  background-position: 25%;
+}
+.deadCaterpillar-2 {
+  background-position: 50%;
+}
+.deadCaterpillar-3 {
+  background-position: 75%;
+}
+.deadCaterpillar-4 {
+  background-position: 100%;
+}
+
 .Wasp-0,
 .Wasp-1,
 .Wasp-2,
@@ -204,6 +245,28 @@ justify-content: center;
   background-position: 99.99%;
 }
 
+.deadWasp-0,
+.deadWasp-1,
+.deadWasp-2,
+.deadWasp-3 {
+  background-image: url("../public/4splat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.deadWasp-0 {
+  background-position: 0%;
+}
+.deadWasp-1 {
+  background-position: 33.33%;
+}
+.deadWasp-2 {
+  background-position: 66.66%;
+}
+.deadWasp-3 {
+  background-position: 99.99%;
+}
+
 .Grasshopper-0,
 .Grasshopper-1,
 .Grasshopper-2 {
@@ -219,6 +282,24 @@ justify-content: center;
   background-position: 50%;
 }
 .Grasshopper-2 {
+  background-position: 100%;
+}
+
+.deadGrasshopper-0,
+.deadGrasshopper-1,
+.deadGrasshopper-2 {
+  background-image: url("../public/3splat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.deadGrasshopper-0 {
+  background-position: 0%;
+}
+.deadGrasshopper-1 {
+  background-position: 50%;
+}
+.deadGrasshopper-2 {
   background-position: 100%;
 }
 
@@ -240,6 +321,24 @@ justify-content: center;
   background-position: 100%;
 }
 
+.deadAnt-0,
+.deadAnt-1,
+.deadAnt-2 {
+  background-image: url("../public/3splat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.deadAnt-0 {
+  background-position: 0%;
+}
+.deadAnt-1 {
+  background-position: 50%;
+}
+.deadAnt-2 {
+  background-position: 100%;
+}
+
 .Ladybug-0,
 .Ladybug-1 {
   background-image: url("../public/ladybug.png");
@@ -251,6 +350,20 @@ justify-content: center;
   background-position: 0%;
 }
 .Ladybug-1 {
+  background-position: 100%;
+}
+
+.deadLadybug-0,
+.deadLadybug-1 {
+  background-image: url("../public/2splat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.deadLadybug-0 {
+  background-position: 0%;
+}
+.deadLadybug-1 {
   background-position: 100%;
 }
 

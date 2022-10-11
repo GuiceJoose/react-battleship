@@ -57,11 +57,12 @@ const Computerboard = ({
     if (squareStatus === "miss") {
       return "Miss";
     }
+
     if (squareStatus.ship.isSunk()) {
       if (squareStatus.ship.direction === "vertical") {
-        return `${squareStatus.ship.name}-${squareStatus.position} vertical`;
+        return `${squareStatus.ship.name}-${squareStatus.position} dead${squareStatus.ship.name}-${squareStatus.position} vertical`;
       } else {
-        return `${squareStatus.ship.name}-${squareStatus.position}`;
+        return `${squareStatus.ship.name}-${squareStatus.position} dead${squareStatus.ship.name}-${squareStatus.position}`;
       }
     }
     if (isArray1InArray2([xcoord, ycoord], hitsOnComputer)) {

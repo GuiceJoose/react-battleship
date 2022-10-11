@@ -35,7 +35,11 @@ const PlayerSquare = ({
         hit = "Hit";
       }
 
-      if (squareStatus !== undefined && squareStatus !== "Miss") {
+      if (
+        squareStatus !== undefined &&
+        squareStatus !== "Miss" &&
+        squareStatus.ship.isSunk() === false
+      ) {
         if (squareStatus.ship.direction === "vertical") {
           setClasses(
             `${squareStatus.ship.name}-${squareStatus.position} vertical ${hit}`
@@ -45,6 +49,20 @@ const PlayerSquare = ({
           setClasses(
             `${squareStatus.ship.name}-${squareStatus.position} ${hit}`
           );
+        }
+      }
+      if (
+        squareStatus !== undefined &&
+        squareStatus !== "Miss" &&
+        squareStatus.ship.isSunk() === true
+      ) {
+        if (squareStatus.ship.direction === "vertical") {
+          setClasses(
+            `dead${squareStatus.ship.name}-${squareStatus.position} vertical`
+          );
+        }
+        if (squareStatus.ship.direction === "horizontal") {
+          setClasses(`dead${squareStatus.ship.name}-${squareStatus.position}`);
         }
       }
     };
