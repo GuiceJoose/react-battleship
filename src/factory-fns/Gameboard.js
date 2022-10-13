@@ -31,7 +31,6 @@ const Gameboard = () => {
     }
     if (board[xCoord][yCoord].ship !== undefined) {
       board[xCoord][yCoord].ship.hit();
-      console.log(board[xCoord][yCoord].ship);
       hits.push([xCoord, yCoord]);
     }
   };

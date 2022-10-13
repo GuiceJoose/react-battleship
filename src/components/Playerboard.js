@@ -77,6 +77,21 @@ const Playerboard = ({
     if (isPlayerTurn === false) {
       let computerAttack = computerPlayer.pickRandomAttack();
       humanBoard.recieveAttack(computerAttack[0], computerAttack[1]);
+      if (
+        humanBoard.board[computerAttack[0]][computerAttack[1]] !== undefined &&
+        humanBoard.board[computerAttack[0]][computerAttack[1]] !== "miss"
+      ) {
+        let nearbySquares = [
+          [computerAttack[0] + 1, computerAttack[1]],
+          [computerAttack[0] - 1, computerAttack[1]],
+          [computerAttack[0], computerAttack[1] + 1],
+          [computerAttack[0], computerAttack[1] - 1],
+        ];
+        computerPlayer.smartAttacks = nearbySquares.filter(
+          (square) =>
+            isArray1InArray2(square, computerPlayer.possibleAttacks) === true
+        );
+      }
       setHitsOnPlayer(humanBoard.hits);
       setIsPlayerTurn(true);
       if (humanBoard.allSunk()) {
